@@ -3,6 +3,8 @@
 /public/storage
 /storage/*.key
 /vendor
+/.idea
+.DS_Store
 .phpunit.result.cache
 docker-compose.override.yml
 npm-debug.log
