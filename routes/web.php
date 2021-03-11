@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\MyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/test/{param}', function ($param) {
+    return "test for route : {$param}";
+});
+
+Route::get('/my/{param}', [MyController::class, 'show']);
