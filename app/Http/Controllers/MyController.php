@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 
 class MyController extends Controller
 {
-    public function show($param)
+    public function show(Request $request, $param)
     {
-        return "test for controller : {$param}";
+        if ($param == "info") {
+            return "test for controller : {$param} -- {$request}";
+        } else {
+            return redirect()->away("https://www.bilibili.com");
+        }
     }
 }

@@ -13,7 +13,7 @@ class MyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton("");
+        //$this->app->singleton("");
     }
 
     /**
