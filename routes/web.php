@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 
 Route::get('/test/{param}', function ($param) {
+	Log::debug("Web access with closure", array("param"=>$param));
     return "test for route : {$param}";
 });
 
