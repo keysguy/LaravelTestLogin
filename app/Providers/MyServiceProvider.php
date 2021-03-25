@@ -33,11 +33,11 @@ class MyServiceProvider extends ServiceProvider
             //Log::debug("My Service Container resolve");
         });
 
-        DB::listen(function ($query) {
+        /*DB::listen(function ($query) {
             // $query->sql
             // $query->bindings
             // $query->time
             Log::debug("My Db Query:{$query}");
-        });
+        });*/
     }
 }
