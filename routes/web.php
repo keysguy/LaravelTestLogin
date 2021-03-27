@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MyController;
+use Inertia\Inertia;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,13 +16,18 @@ use App\Http\Controllers\MyController;
 */
 
 Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
+
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
-
-Route::get('/test/{param}', function ($param) {
-	Log::debug("Web access with closure", array("param"=>$param));
-    return "test for route : {$param}";
-});
-
-Route::get('/my/{param}', [MyController::class, 'show']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->name('dashboard');
